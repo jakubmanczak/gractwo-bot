@@ -19,7 +19,7 @@ module.exports = {
             .addField('Gractwo DISCORD','`gractwo.pl/discord` lub `gractwo.pl/dc` lub `discord.gg/NBXq95C`')
             .addField('Gractwo FACEBOOK','`gractwo.pl/facebook` lub `gractwo.pl/fb` lub `facebook.com/groups/gractwo`')
             .attachFiles('./gractwo.png')
-            .setFooter('by j4mesen','attachment://gractwo.png')
+            .setFooter('#witaj','attachment://gractwo.png')
             .setTimestamp();
           msg.channel.send(witajEmbed);
           break;
@@ -50,7 +50,7 @@ module.exports = {
           break;
         }
         default:{
-          msg.reply('Nie sprecyzowałeś!');
+          msg.reply('nie sprecyzowałeś!');
           break;
         }
       }
