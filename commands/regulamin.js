@@ -49,7 +49,7 @@ module.exports = {
         calyRegulaminEmbed
           .addField(regulaminEmbedTitleArray[i],regulaminEmbedContentArray[i]);
       }
-      if(args[0] == 'admin' && msg.member.hasPermission('Moderator')){
+      if(args[0] == 'admin' && msg.member.roles.cache.find(role => role.name == 'Moderatorzy')){
         calyRegulaminEmbed
           .setFooter(`Ostatnio zaktualizowany`, 'attachment://gractwo.png');
       }else{
