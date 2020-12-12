@@ -18,6 +18,8 @@ module.exports = {
           .attachFiles('./gractwo.png')
           .setFooter(`#rolki`, 'attachment://gractwo.png')
           .setTimestamp();
+        msg.channel.send(botAnnouncementEmbed);
+        msg.channel.send('hej');
       }
     }else{
       msg.reply('chyba nie masz na to wystarczających permisji.');
