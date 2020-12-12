@@ -21,7 +21,11 @@ client.on('message', message => {
 	if(message.channel.name == 'rolki'){
 
 		if(message.author.bot) return;
-		message.delete();
+		
+		if(!message.member.roles.cache.find(role => role.name == 'Moderatorzy')){
+			message.delete();
+		}
+
 		if(message.content == 'tf2' || message.content == 'liga' || message.content == 'csgo' || message.content == 'minecraft' || message.content == 'rainbow-six'){
 			const role = message.member.guild.roles.cache.find(role => role.name == message.content)
 			if(message.member.roles.cache.find(role => role.name == message.content)){
@@ -50,17 +54,19 @@ client.on('message', message => {
 					.catch(console.error);
 			}
 		}else{
-			console.log(`${message.author.username} spammed the rolki channel with a bad message`);
-			const rolkiWrongMessageEmbed = new Discord.MessageEmbed()
-				.setTitle(`To nie jest kanał na pisanie, ${message.author.username}`)
-				.setColor(config.embedColorFail)
-				.attachFiles('./gractwo.png')
-				.setFooter('#rolki','attachment://gractwo.png')
-				.setTimestamp();
-			message.channel.send(rolkiWrongMessageEmbed)
-				.then(message => message.delete({timeout: 3500}))
-				.catch(console.error);
+			if(!message.member.roles.cache.find(role => role.name == 'Moderatorzy')){
+				console.log(`${message.author.username} spammed the rolki channel with a bad message`);
+				const rolkiWrongMessageEmbed = new Discord.MessageEmbed()
+					.setTitle(`To nie jest kanał na pisanie, ${message.author.username}`)
+					.setColor(config.embedColorFail)
+					.attachFiles('./gractwo.png')
+					.setFooter('#rolki','attachment://gractwo.png')
+					.setTimestamp();
+				message.channel.send(rolkiWrongMessageEmbed)
+					.then(message => message.delete({timeout: 3500}))
+					.catch(console.error);
 			return;
+			}
 		}
 		
 	}
