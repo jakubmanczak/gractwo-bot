@@ -21,15 +21,12 @@ client.on('message', message => {
 	if(message.channel.name == 'rolki'){
 
 		if(message.author.bot) return;
-		
-		if(!message.member.roles.cache.find(role => role.name == 'Moderatorzy')){
-			message.delete();
-		}
 
 		if(message.content == 'tf2' || message.content == 'liga' || message.content == 'csgo' || message.content == 'minecraft' || message.content == 'rainbow-six'){
 			const role = message.member.guild.roles.cache.find(role => role.name == message.content)
 			if(message.member.roles.cache.find(role => role.name == message.content)){
 				message.member.roles.remove(role);
+				message.delete();
 				console.log(`removed ${message.author.username}'s ${message.content} role.`);
 				const removeRolesEmbed = new Discord.MessageEmbed()
 					.setTitle(`Odebrano Ci rangę ${message.content}, ${message.author.username}.`)
@@ -42,6 +39,7 @@ client.on('message', message => {
 					.catch(console.error);
 			}else{
 				message.member.roles.add(role);
+				message.delete();
 				console.log(`added ${message.content} role to ${message.author.username}.`);
 				const addRolesEmbed = new Discord.MessageEmbed()
 					.setTitle(`Przyznano Ci rangę ${message.content}, ${message.author.username}.`)
