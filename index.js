@@ -60,6 +60,7 @@ client.on('message', message => {
 			message.channel.send(rolkiWrongMessageEmbed)
 				.then(message => message.delete({timeout: 3500}))
 				.catch(console.error);
+			return;
 		}
 		
 	}
