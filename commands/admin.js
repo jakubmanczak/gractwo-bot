@@ -49,6 +49,10 @@ module.exports = {
           msg.channel.send(botAnnouncementEmbed);
           break;
         }
+        case 'atEveryone':{
+          msg.channel.send(`@everyone hi`);
+          break;
+        }
         default:{
           msg.reply('nie sprecyzowałeś!');
           break;
