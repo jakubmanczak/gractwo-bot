@@ -49,8 +49,8 @@ module.exports = {
           msg.channel.send(botAnnouncementEmbed);
           break;
         }
-        case 'atEveryone':{
-          msg.channel.send(`@everyone hi`);
+        case 'everyone':{
+          msg.channel.send(`@everyone`);
           break;
         }
         default:{
