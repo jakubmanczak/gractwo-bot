@@ -8,7 +8,7 @@ module.exports = {
 	execute(msg, args, Discord, config, client) {
     if(msg.member.roles.cache.find(role => role.name == 'Moderatorzy')){
       msg.delete();
-      switch(args[0]){
+      switch(args[0].toLocaleLowerCase()){
         case 'witaj':{
           const witajEmbed = new Discord.MessageEmbed()
             .setTitle('Witajcie w Gractwie!')
@@ -35,7 +35,7 @@ module.exports = {
           msg.channel.send(rolkiEmbed);
           break;
         }
-        case 'botAnnouncement':{
+        case 'botannouncement':{
           const botAnnouncementEmbed = new Discord.MessageEmbed()
             .setTitle('Hej,')
             .setDescription('W ciągu ostatnich trzech dni zostałem stworzony ja - bot Gractwa.')
@@ -48,6 +48,9 @@ module.exports = {
             .setTimestamp();
           msg.channel.send(botAnnouncementEmbed);
           break;
+        }
+        case 'twojamama':{
+          msg.channel.send('mama twoja');
         }
         case 'everyone':{
           msg.channel.send(`@everyone`);
