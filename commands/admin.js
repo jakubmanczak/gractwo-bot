@@ -8,7 +8,7 @@ module.exports = {
 	execute(msg, args, Discord, config, client) {
     if(msg.member.roles.cache.find(role => role.name == 'Moderatorzy')){
       msg.delete();
-      switch(args[0].toLocaleLowerCase()){
+      switch(args[0]){
         case 'witaj':{
           const witajEmbed = new Discord.MessageEmbed()
             .setTitle('Witajcie w Gractwie!')
