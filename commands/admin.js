@@ -51,6 +51,7 @@ module.exports = {
         }
         case 'twojamama':{
           msg.channel.send('mama twoja');
+          break;
         }
         case 'everyone':{
           msg.channel.send(`@everyone`);
