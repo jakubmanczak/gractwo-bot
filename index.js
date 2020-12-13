@@ -54,6 +54,7 @@ client.on('message', message => {
 		}else{
 			if(!message.member.roles.cache.find(role => role.name == 'Moderatorzy')){
 				console.log(`${message.author.username} spammed the rolki channel with a bad message`);
+				message.delete();
 				const rolkiWrongMessageEmbed = new Discord.MessageEmbed()
 					.setTitle(`To nie jest kanał na pisanie, ${message.author.username}`)
 					.setColor(config.embedColorFail)
