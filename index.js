@@ -18,6 +18,9 @@ client.once('ready', () =>{
 
 client.on('message', message => {
 
+	/* OMITTING THE COMMAND HANDLER TO CATCH ANY AND ALL MESSAGES IN THE '#rolki' CHANNEL
+	MAKING 'tf2' A VIABLE COMMAND WITHOUT A PREFIX */
+	// command handler is downward from this if statement
 	if(message.channel.name == 'rolki'){
 
 		if(message.author.bot) return;
