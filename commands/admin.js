@@ -49,7 +49,7 @@ module.exports = {
           msg.channel.send(botAnnouncementEmbed);
           break;
         }
-        case 'twojamama':{
+        case 'riposta':{
           msg.channel.send('mama twoja');
           break;
         }
