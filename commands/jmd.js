@@ -7,7 +7,7 @@ module.exports = {
     msg.delete()
       .catch(console.error);
     const jmdEmbed = new Discord.MessageEmbed()
-      .setTitle('chotto matte')
+      .setTitle('Chotto matte! >w<')
       .setColor(config.embedColor)
       .setDescription(`Mówienie jemenikowi żeby zamknął dupę...`)
       .attachFiles('./gractwo.png')
