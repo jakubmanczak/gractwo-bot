@@ -18,8 +18,7 @@
   },
   "homepage": "https://github.com/jakubmanczak/gractwo-bot#readme",
   "dependencies": {
-    "@discordjs/opus": "^0.5.0",
-    "discord.js": "^12.5.3",
+    "discord.js": "^12.5.1",
     "request": "2.81.0"
   }
 }
