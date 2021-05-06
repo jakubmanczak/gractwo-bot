@@ -125,7 +125,7 @@ client.on('message', (message) => {
 	}
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN).then(() => getStatus());
 
 // Funne API hehehehe
 const http = require('http');
@@ -162,7 +162,6 @@ const getStatus = () => {
 	};
 };
 
-getStatus();
 setInterval(getStatus, 30000);
 
 http
