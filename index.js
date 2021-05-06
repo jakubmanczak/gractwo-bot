@@ -131,38 +131,45 @@ client.login(process.env.BOT_TOKEN);
 const http = require('http');
 const port = process.env.PORT || 3000;
 
+let status;
+
+const getStatus = () => {
+	let totalSeconds = process.uptime();
+	let realTotalSecs = Math.floor(totalSeconds % 60);
+	let days = Math.floor((totalSeconds % 31536000) / 86400);
+	let hours = Math.floor((totalSeconds / 3600) % 24);
+	let mins = Math.floor((totalSeconds / 60) % 60);
+	let used = process.memoryUsage().heapUsed / 1024 / 1024;
+
+	status = {
+		username: client.user.username,
+		avatar: client.user.avatarURL(),
+		status: client.user.presence.status,
+		activity:
+			client.user.presence.activities.length > 0
+				? `${client.user.presence.activities[0].type} ${client.user.presence.activities[0].name}`
+				: null,
+		members: client.users.cache.size,
+		uptime: {
+			days,
+			hours,
+			mins,
+			realTotalSecs,
+		},
+		memory: `${Math.round(used * 100) / 100}MB`,
+		ping: `${Math.floor(client.ws.ping)}ms`,
+		node: process.version,
+	};
+};
+
+getStatus();
+setInterval(getStatus, 30000);
+
 http
 	.createServer(async (req, res) => {
 		res.statusCode = 200;
 
-		let totalSeconds = process.uptime();
-		let realTotalSecs = Math.floor(totalSeconds % 60);
-		let days = Math.floor((totalSeconds % 31536000) / 86400);
-		let hours = Math.floor((totalSeconds / 3600) % 24);
-		let mins = Math.floor((totalSeconds / 60) % 60);
-		let used = process.memoryUsage().heapUsed / 1024 / 1024;
-
-		res.write(
-			JSON.stringify({
-				username: client.user.username,
-				avatar: client.user.avatarURL(),
-				status: client.user.presence.status,
-				activity:
-					client.user.presence.activities.length > 0
-						? `${client.user.presence.activities[0].type} ${client.user.presence.activities[0].name}`
-						: null,
-				members: client.users.cache.size,
-				uptime: {
-					days,
-					hours,
-					mins,
-					realTotalSecs,
-				},
-				memory: `${Math.round(used * 100) / 100}MB`,
-				ping: `${Math.floor(client.ws.ping)}ms`,
-				node: process.version,
-			})
-		);
+		res.write(JSON.stringify(status));
 		res.end();
 	})
 	.listen(port, () => console.log(`Now listening on port ${port}`));
