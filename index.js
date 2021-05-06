@@ -147,10 +147,10 @@ http
 				username: client.user.username,
 				avatar: client.user.avatarURL(),
 				status: client.user.presence.status,
-				activity: `${
-					client.user.presence.activities[0].type[0].toUpperCase() +
-					client.user.presence.activities[0].type.toLowerCase().slice(1)
-				} ${client.user.presence.activities[0].name}`,
+				activity:
+					client.user.presence.activities.length > 0
+						? `${client.user.presence.activities[0].type} ${client.user.presence.activities[0].name}`
+						: null,
 				members: client.users.cache.size,
 				uptime: {
 					days,
