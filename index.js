@@ -18,6 +18,7 @@ client.once('ready', () => {
 	console.log(
 		'-------------------------------------\nTHE BOT IS READY TO GO.\n-------------------------------------'
 	);
+	client.user.setActivity('Prefix = .', { type: 'LISTENING' });
 });
 
 client.on('message', (message) => {
