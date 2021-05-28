@@ -18,7 +18,7 @@ client.once('ready', () => {
 	console.log(
 		'-------------------------------------\nTHE BOT IS READY TO GO.\n-------------------------------------'
 	);
-	client.user.setActivity('Prefix = .', { type: 'LISTENING' });
+	client.user.setActivity('.ping', { type: 'LISTENING' });
 });
 
 client.on('message', (message) => {
